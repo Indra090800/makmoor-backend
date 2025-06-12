@@ -787,7 +787,7 @@ select.form-control:not([size]):not([multiple]) {
 .card .card-header h4 {
   font-size: 16px;
   line-height: 28px;
-  color: #6777ef;
+  color: #50C474;
   padding-right: 10px;
   margin-bottom: 0;
 }
@@ -1290,18 +1290,18 @@ table tr:hover .table-links {
 
 /* 3.10 Pagination */
 .page-item .page-link {
-  color: #6777ef;
+  color: #50C474;
   border-radius: 3px;
   margin: 0 3px;
 }
 .page-item.active .page-link {
-  background-color: #6777ef;
-  border-color: #6777ef;
+  background-color: #50C474;
+  border-color: #50C474;
 }
 .page-item.disabled .page-link {
   border-color: transparent;
   background-color: #f9fafe;
-  color: #6777ef;
+  color: #50C474;
   opacity: 0.6;
 }
 
@@ -1311,7 +1311,7 @@ table tr:hover .table-links {
   font-weight: 600;
 }
 .page-link:hover {
-  background-color: #6777ef;
+  background-color: #50C474;
   color: #fff;
   border-color: transparent;
 }
@@ -2943,7 +2943,7 @@ pre {
   border-radius: 5px;
   height: 8px;
   width: 30px;
-  background-color: #6777ef;
+  background-color: #50C474;
   display: inline-block;
   float: left;
   margin-top: 6px;

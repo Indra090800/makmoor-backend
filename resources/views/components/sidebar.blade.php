@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Makmoor Apps</a>
+            <a href="index.html">MAKMOOR APPS</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">M</a>
@@ -11,7 +11,7 @@
 
 
             <li class='nav-item'>
-                <a class="nav-link" href="#"><i class="fas fa-columns"></i>General Dashboard</a>
+                <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-columns"></i>Dashboard</a>
             </li>
 
 

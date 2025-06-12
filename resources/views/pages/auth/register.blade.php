@@ -8,10 +8,8 @@
 @endpush
 
 @section('main')
-    <div class="card card-primary">
-        <div class="card-header">
-            <h4>Register</h4>
-        </div>
+    <div class="card card-success">
+        
 
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
@@ -80,7 +78,7 @@
                 @enderror
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">
                         Register
                     </button>
                 </div>
