@@ -16,8 +16,8 @@ class HomeController extends Controller
         $jmlProduct = DB::table('products')->count();
         $jmlOrder = DB::table('orders')->count();
         $totalOrder = DB::table('orders')
-    ->whereDate('transaction_time', Carbon::today())
-    ->sum('total');
+            ->whereDate('transaction_time', Carbon::today())
+            ->sum('total');
 
         return view('pages.dashboard', compact('jmlUser', 'jmlProduct', 'jmlOrder', 'totalOrder'));
     }
