@@ -42,7 +42,7 @@
                                 <h4>Total Transaksi</h4>
                             </div>
                             <div class="card-body">
-                                42
+                                {{ $jmlOrder }}
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                 <h4>Pendapatan hari ini</h4>
                             </div>
                             <div class="card-body">
-                                1,201
+                                {{ formatRupiah($totalOrder) }}
                             </div>
                         </div>
                     </div>
