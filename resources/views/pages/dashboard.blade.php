@@ -85,7 +85,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Statistics Mingguan</h4>
+                            <h4>Statistics Mingguan MAKMOOR</h4>
                             <div class="card-header-action">
                             </div>
                         </div>
