@@ -20,6 +20,9 @@ class Order extends Model
         'total_item',
         'id_kasir',
         'nama_kasir',
+        'table_number',
+        'customer_name',
+        'status',
         'transaction_time'
     ];
 }

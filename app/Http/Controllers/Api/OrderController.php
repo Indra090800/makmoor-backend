@@ -18,6 +18,7 @@ class OrderController extends Controller
             'sub_total' => 'required',
             'tax' => 'required',
             'discount' => 'required',
+            'discount_amount' => 'required',
             'service_charge' => 'required',
             'total' => 'required',
             'payment_method' => 'required',
@@ -25,6 +26,9 @@ class OrderController extends Controller
             'id_kasir' => 'required',
             'nama_kasir' => 'required',
             'transaction_time' => 'required',
+            'table_number' => 'required',
+            'customer_name' => 'required',
+            'status' => 'required',
             // 'order_items' => 'required'
         ]);
 
@@ -34,12 +38,16 @@ class OrderController extends Controller
             'sub_total' => $request->sub_total,
             'tax' => $request->tax,
             'discount' => $request->discount,
+            'discount_amount' => $request->discount_amount,
             'service_charge' => $request->service_charge,
             'total' => $request->total,
             'payment_method' => $request->payment_method,
             'total_item' => $request->total_item,
             'id_kasir' => $request->id_kasir,
             'nama_kasir' => $request->nama_kasir,
+            'table_number' => $request->table_number,
+            'customer_name' => $request->customer_name,
+            'status' => $request->status,
             'transaction_time' => $request->transaction_time
         ]);
 
@@ -51,6 +59,12 @@ class OrderController extends Controller
                 'quantity' => $item['quantity'],
                 'price' => $item['price']
             ]);
+
+            $product = \App\Models\Product::find($item['id_product']);
+            if ($product) {
+                $product->stock = max(0, $product->stock - $item['quantity']);
+                $product->save();
+            }
         }
 
         return response()->json([

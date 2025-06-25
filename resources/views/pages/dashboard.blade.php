@@ -87,15 +87,10 @@
                         <div class="card-header">
                             <h4>Statistics</h4>
                             <div class="card-header-action">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-primary">Week</a>
-                                    <a href="#" class="btn">Month</a>
-                                </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="myChart" height="182"></canvas>
-
+                            <canvas id="myChart" height="100"></canvas>
                         </div>
                     </div>
                 </div>
@@ -116,5 +111,60 @@
     <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/index-0.js') }}"></script>
+    {{-- <script src="{{ asset('js/page/index-0.js') }}"></script> --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const chartData = @json(array_values($dataChart));
+        console.log("Chart Data:", chartData); // Cek console
+
+        const ctx = document.getElementById("myChart");
+        if (!ctx) {
+            console.error("myChart not found!");
+            return;
+        }
+
+        const statistics_chart = ctx.getContext('2d');
+
+        new Chart(statistics_chart, {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'Total Penjualan',
+                    data: chartData,
+                    borderWidth: 5,
+                    borderColor: '#6777ef',
+                    backgroundColor: 'transparent',
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#6777ef',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            stepSize: 10000
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#fbfbfb',
+                            lineWidth: 2
+                        }
+                    }]
+                }
+            }
+        });
+    });
+</script>
+    
 @endpush

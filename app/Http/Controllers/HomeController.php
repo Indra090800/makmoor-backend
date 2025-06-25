@@ -19,6 +19,25 @@ class HomeController extends Controller
             ->whereDate('transaction_time', Carbon::today())
             ->sum('total');
 
-        return view('pages.dashboard', compact('jmlUser', 'jmlProduct', 'jmlOrder', 'totalOrder'));
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+
+        $orderStats = DB::table('orders')
+            ->selectRaw('DAYNAME(transaction_time) as day, SUM(total) as total')
+            ->whereBetween('transaction_time', [$startOfWeek, $endOfWeek])
+            ->groupBy('day')
+            ->get();
+
+        $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $dataChart = array_fill_keys($days, 0);
+
+        foreach ($orderStats as $stat) {
+            $dataChart[$stat->day] = (int) $stat->total;
+        }
+
+        // Pastikan semua int
+        $dataChart = array_map('intval', $dataChart);
+
+        return view('pages.dashboard', compact('jmlUser', 'jmlProduct', 'jmlOrder', 'totalOrder', 'dataChart'));
     }
 }
