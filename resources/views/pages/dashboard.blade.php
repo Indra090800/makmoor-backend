@@ -85,7 +85,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Statistics Test</h4>
+                            <h4>Statistics Test1</h4>
                             <div class="card-header-action">
                             </div>
                         </div>
