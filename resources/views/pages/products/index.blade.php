@@ -32,9 +32,7 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>All Posts</h4>
-                            </div>
+                            
                             <div class="card-body">
 
                                 <div class="float-right">
@@ -58,6 +56,7 @@
                                             <th>Category</th>
                                             <th>Price</th>
                                             <th>Status</th>
+                                            <th>Stock</th>
                                             <th>Create At</th>
                                             <th>Action</th>
                                         </tr>
@@ -75,6 +74,7 @@
                                                 <td>
                                                     {{ $product->status == 1 ? 'Active' : 'Inactive' }}
                                                 </td>
+                                                <td>{{ $product->stock }}</td>
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">

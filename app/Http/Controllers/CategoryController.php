@@ -8,9 +8,11 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     //index
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(10);
+        $categories = Category::when($request->input('name'), function ($query, $name) {
+            $query->where('name', 'like', '%' . $name . '%');
+        })->paginate(10);
         return view('pages.categories.index', compact('categories'));
     }
 

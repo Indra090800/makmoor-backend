@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Categories')
+@section('title', 'History Stock')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,11 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Category</h1>
-                <div class="section-header-button">
-                    <a href="{{ route('categories.create') }}" class="btn btn-success">Add New</a>
-                </div>
+                <h1>History Stock</h1>
+
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Category</a></div>
-                    <div class="breadcrumb-item">All Category</div>
+                    <div class="breadcrumb-item">History Stock</div>
                 </div>
             </div>
             <div class="section-body">
@@ -32,11 +29,10 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
-                            
                             <div class="card-body">
 
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('categories.index') }}">
+                                    <form method="GET" action="{{ route('products-stocks.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -52,36 +48,24 @@
                                     <table class="table-striped table">
                                         <tr>
 
-                                            <th>Name</th>
-
-                                            <th>Create At</th>
-                                            <th>Action</th>
+                                            <th>Nama Product</th>
+                                            <th>Nama Supplier</th>
+                                            <th>Keluar/Masuk</th>
+                                            <th>Deskripsi</th>
+                                            <th>Created At</th>
                                         </tr>
-                                        @foreach ($categories as $category)
+                                        @foreach ($stocks as $stock)
                                             <tr>
 
-                                                <td>{{ $category->name }}
+                                                <td>{{ $stock->product->name ?? '-'  }}
                                                 </td>
-
-                                                <td>{{ $category->created_at }}</td>
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('categories.edit', $category->id) }}'
-                                                            class="btn btn-sm btn-success btn-icon">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a>
-
-                                                        <form action="{{ route('categories.destroy', $category->id) }}"
-                                                            method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                <i class="fas fa-times"></i> Delete
-                                                            </button>
-                                                        </form>
-                                                    </div>
+                                                <td>{{ $stock->supplier->name ?? '-' }}
+                                                </td>
+                                                <td>{{ $stock->description == 'Add From Supplier' ? $stock->stock_in : $stock->stock_out }}
+                                                </td>
+                                                <td>{{ $stock->description }}
+                                                </td>
+                                                <td>{{ $stock->created_at }}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -90,7 +74,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $categories->withQueryString()->links() }}
+                                    {{ $stocks->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

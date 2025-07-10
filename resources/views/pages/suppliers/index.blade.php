@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Categories')
+@section('title', 'Suppliers')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Category</h1>
+                <h1>Supplier</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('categories.create') }}" class="btn btn-success">Add New</a>
+                    <a href="{{ route('suppliers.create') }}" class="btn btn-success">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Category</a></div>
-                    <div class="breadcrumb-item">All Category</div>
+                    <div class="breadcrumb-item"><a href="#">Supplier</a></div>
+                    <div class="breadcrumb-item">All Supplier</div>
                 </div>
             </div>
             <div class="section-body">
@@ -32,11 +32,10 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
-                            
                             <div class="card-body">
 
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('categories.index') }}">
+                                    <form method="GET" action="{{ route('suppliers.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -52,27 +51,32 @@
                                     <table class="table-striped table">
                                         <tr>
 
-                                            <th>Name</th>
-
-                                            <th>Create At</th>
+                                            <th>Nama</th>
+                                            <th>Alamat</th>
+                                            <th>Email</th>
+                                            <th>No. HP</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($categories as $category)
+                                        @foreach ($suppliers as $supplier)
                                             <tr>
 
-                                                <td>{{ $category->name }}
+                                                <td>{{ $supplier->name }}
                                                 </td>
-
-                                                <td>{{ $category->created_at }}</td>
+                                                <td>{{ $supplier->address }}
+                                                </td>
+                                                <td>{{ $supplier->email }}
+                                                </td>
+                                                <td>{{ $supplier->phone }}
+                                                </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('categories.edit', $category->id) }}'
+                                                        <a href='{{ route('suppliers.edit', $supplier->id) }}'
                                                             class="btn btn-sm btn-success btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('categories.destroy', $category->id) }}"
+                                                        <form action="{{ route('suppliers.destroy', $supplier->id) }}"
                                                             method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -90,7 +94,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $categories->withQueryString()->links() }}
+                                    {{ $suppliers->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
