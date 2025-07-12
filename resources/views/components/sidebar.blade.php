@@ -39,7 +39,7 @@
                         <a class="nav-link" href="{{ route('products-stocks.create') }}">Tambah/Kurang</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('products-stocks.index') }}">History Stock</a>
+                        <a class="nav-link" href="{{ route('products-stocks.index') }}">History Stockk</a>
                     </li>
                      <li>
                         <a class="nav-link" href="{{ route('products-stocks-opname.index') }}">Stock OpName</a>
